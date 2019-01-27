@@ -1,0 +1,28 @@
+<div class="row" style="display: flex; justify-content: center; align-items: center; height: 100%">
+  <div class="card">
+    <div class="card-body">
+      <form #loginOrRegisterForm>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Username</label>
+          <input class="form-control" name="reglog_username" id="reglog_username" placeholder="Enter username" [(ngModel)]="username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" name="reglog_password" id="reglog_password" placeholder="Password" [(ngModel)]="password">
+        </div>
+        <!-- <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        </div> -->
+        <div style="display: flex; justify-content:space-between">
+          <button class="btn btn-info" (click)="onRegister()">Register</button>
+          <button class="btn btn-primary" (click)="onLogin()">Login</button>
+        </div>
+        <div *ngIf="registerSuccess" style="display: flex; justify-content:space-between">
+          Registration succesfull.
+        </div>
+        <div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
