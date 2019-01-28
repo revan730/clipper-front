@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.error = res.err;
       if (!res.err) {
         this.storage.setToken(res.token);
-        this.router.navigateByUrl('/game');
+        this.router.navigateByUrl('/adminDash');
       }
     });
   }

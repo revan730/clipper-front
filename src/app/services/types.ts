@@ -25,4 +25,10 @@ export namespace Clipper {
         token?: string;
         err?: string;
       }
+      export interface TokenPayload {
+        admin?: boolean;
+        exp?: number;
+        user?: string;
+        userID?: number;
+      }
 }

@@ -9,6 +9,7 @@ import { StorageService } from './services/storage.service';
 
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { AdminDashComponent } from './admin-dash/admin-dash.component';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -24,10 +25,34 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     if (!this.storage.data['token']) {
-      this.storage.data['token'] = localStorage.getItem('token');
+      const lsToken: string = localStorage.getItem('token');
+      if (lsToken) {
+        this.storage.setToken(lsToken);
+      }
     }
-    if (!this.storage.data['token']) {
+    if (!this.storage.data['token'] || this.storage.isTokenExpired()) {
+      console.log(this.storage.isTokenExpired());
       this.router.navigateByUrl('/login');
+      return false;
+    }
+    return true;
+  }
+}
+
+@Injectable()
+export class AdminGuard implements CanActivate {
+  constructor(
+    private storage: StorageService,
+    private router: Router,
+  ) {
+  }
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
+    if (!this.storage.isUserAdmin()) {
+      this.router.navigateByUrl('/userDash');
       return false;
     }
     return true;
@@ -38,6 +63,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/userDash', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'userDash', component: UserDashComponent, canActivate: [AuthGuard]},
+  {path :'adminDash', component: AdminDashComponent, canActivate: [AuthGuard, AdminGuard]},
 ];
 
 @NgModule({
