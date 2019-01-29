@@ -48,11 +48,12 @@ export class ClipperService {
       map(res => (console.log(res), res))
     );
   }
+  // TODO: token via interception
   public getRepos(page: number, limit: number) {
     const token = this.st.data['token'];
-    // TODO: Looks strange
     if (token) {
-      const params = new HttpParams().set('page', String(page))
+      const params = new HttpParams()
+      .set('page', String(page))
       .set('limit', String(limit));
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
@@ -67,6 +68,30 @@ export class ClipperService {
         options
       ).pipe(
         map(res => res as Clipper.GetReposResponse),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
+  public getBuilds(repoID: number, branch: string, page: number, limit: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const params = new HttpParams()
+      .set('branch', branch)
+      .set('page', String(page))
+      .set('limit', String(limit));
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        params,
+        headers
+      };
+      console.log('SENDING GET BUILDS', params);
+      return this.http.get(
+        Clipper.GetBuildsRequest.link(repoID),
+        options
+      ).pipe(
+        map(res => res as Clipper.GetBuildsResponse),
         map(res => (console.log(res), res))
       )
     }

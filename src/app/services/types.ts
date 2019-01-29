@@ -43,4 +43,20 @@ export namespace Clipper {
         repos?: Array<Repo>;
         err?: string;
       }
+      export namespace GetBuildsRequest {
+        export const link = (repoID) => genLink(`repos/${repoID}/builds`);
+      }
+      export interface Build {
+        repoID: number;
+        ID: number;
+        isSuccessfull: boolean;
+        date: Date;
+        branch: string;
+        stdout: string;
+      }
+      export interface GetBuildsResponse {
+        total?: number;
+        builds?: Array<Build>;
+        err?: string;
+      }
 }

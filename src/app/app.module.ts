@@ -14,6 +14,7 @@ import { ClipperService } from './services/clipper.service';
 import { StorageService } from './services/storage.service';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { ReposListComponent } from './repos-list/repos-list.component';
+import { BuildsListComponent } from './builds-list/builds-list.component';
 
 
 
@@ -23,7 +24,8 @@ import { ReposListComponent } from './repos-list/repos-list.component';
     LoginComponent,
     UserDashComponent,
     AdminDashComponent,
-    ReposListComponent
+    ReposListComponent,
+    BuildsListComponent
   ],
   imports: [
     BrowserModule,
