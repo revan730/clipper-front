@@ -1,6 +1,6 @@
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let build of builds | async | paginate: { id: 'buildsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
-    {{build.date}}-{{build.branch}} - {{build.isSucccessfull ? 'Fixed' : 'Failed'}}
+    {{build.date | date: 'medium'}}  {{build.branch}} - {{build.isSuccessfull ? 'Fixed' : 'Failed'}}
   </li>
 </ul>
 <div class="has-text-centered">

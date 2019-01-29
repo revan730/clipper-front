@@ -1,6 +1,17 @@
-<p>
+<h2>
   {{this.repo.fullName}}
-  Builds:
-  <builds-list [properties]="{repoID: this.repo.repoID, branch: 'master'}"></builds-list>
-  <branch-configs-list [properties]="{repoID: this.repo.repoID}"></branch-configs-list>
-</p>
+</h2>
+  <div class="halves">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Builds:</h5>
+        <builds-list [properties]="{repoID: this.repo.repoID, branch: 'master'}"></builds-list>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Branches:</h5>
+        <branch-configs-list [properties]="{repoID: this.repo.repoID}"></branch-configs-list>
+      </div>
+    </div>
+  </div>
