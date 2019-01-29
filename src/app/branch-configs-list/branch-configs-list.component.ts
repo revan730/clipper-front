@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
 
 @Component({
-  selector: 'repos-list',
-  templateUrl: './repos-list.component.html',
-  styleUrls: ['./repos-list.component.css']
+  selector: 'branch-configs-list',
+  templateUrl: './branch-configs-list.component.html',
+  styleUrls: ['./branch-configs-list.component.css']
 })
-export class ReposListComponent implements OnInit {
-  repos: Array<Clipper.Repo>;
+export class BranchConfigsListComponent implements OnInit {
+  branchConfigs: Array<Clipper.BranchConfig>;
   p: number = 1;
   total: number;
   loading: boolean;
+  @Input() properties: any = {repoID: 0}
 
   constructor(
     public clipper: ClipperService,
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
     this.getPage(1);
@@ -23,15 +25,15 @@ export class ReposListComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    this.clipper.getRepos(page, 10)
+    this.clipper.getBranchConfigs(this.properties.repoID,
+      page, 10)
     .subscribe(res => {
       if (!res.err) {
         this.loading = false;
-        this.repos = res.repos;
+        this.branchConfigs = res.configs;
         this.total = res.total;
         this.p = page;
       }
     });
   }
-
 }

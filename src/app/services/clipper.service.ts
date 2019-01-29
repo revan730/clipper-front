@@ -72,6 +72,25 @@ export class ClipperService {
       )
     }
   }
+  public getRepo(repoID: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING GET REPO', repoID);
+      return this.http.get(
+        Clipper.GetRepoRequest.link(repoID),
+        options
+      ).pipe(
+        map(res => res as Clipper.Repo),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
   public getBuilds(repoID: number, branch: string, page: number, limit: number) {
     const token = this.st.data['token'];
     if (token) {
@@ -96,5 +115,27 @@ export class ClipperService {
       )
     }
   }
-
+  public getBranchConfigs(repoID: number, page: number, limit: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const params = new HttpParams()
+      .set('page', String(page))
+      .set('limit', String(limit));
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        params,
+        headers
+      };
+      console.log('SENDING GET BRANCH CONFIGS', params);
+      return this.http.get(
+        Clipper.GetBranchConfigsRequest.link(repoID),
+        options
+      ).pipe(
+        map(res => res as Clipper.GetBranchConfigsResponse),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
 }

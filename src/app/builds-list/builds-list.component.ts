@@ -8,7 +8,7 @@ import { ClipperService } from '../services/clipper.service';
   styleUrls: ['./builds-list.component.css']
 })
 export class BuildsListComponent implements OnInit {
-  repos: Array<Clipper.Build>;
+  builds: Array<Clipper.Build>;
   p: number = 1;
   total: number;
   loading: boolean;
@@ -20,7 +20,7 @@ export class BuildsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPage(1);
+    this.getPage(this.p);
   }
 
   getPage(page: number) {
@@ -29,8 +29,10 @@ export class BuildsListComponent implements OnInit {
        this.properties.branch, page, 10)
     .subscribe(res => {
       if (!res.err) {
-        this.repos = res.builds;
+        this.loading = false;
+        this.builds = res.builds;
         this.total = res.total;
+        this.p = page;
       }
     });
   }

@@ -1,0 +1,6 @@
+<p>
+  {{this.repo.fullName}}
+  Builds:
+  <builds-list [properties]="{repoID: this.repo.repoID, branch: 'master'}"></builds-list>
+  <branch-configs-list [properties]="{repoID: this.repo.repoID}"></branch-configs-list>
+</p>

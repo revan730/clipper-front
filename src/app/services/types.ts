@@ -43,6 +43,14 @@ export namespace Clipper {
         repos?: Array<Repo>;
         err?: string;
       }
+      export interface GetRepoResponse {
+        repoID?: number;
+        fullName?: string;
+        err?: string
+      }
+      export namespace GetRepoRequest {
+        export const link = (repoID) => genLink(`repos/${repoID}`);
+      }
       export namespace GetBuildsRequest {
         export const link = (repoID) => genLink(`repos/${repoID}/builds`);
       }
@@ -57,6 +65,18 @@ export namespace Clipper {
       export interface GetBuildsResponse {
         total?: number;
         builds?: Array<Build>;
+        err?: string;
+      }
+      export namespace GetBranchConfigsRequest {
+        export const link = (repoID) => genLink(`repos/${repoID}/branch`);
+      }
+      export interface BranchConfig {
+        branch: string;
+        ciEnabled: boolean;
+      }
+      export interface GetBranchConfigsResponse {
+        total?: number;
+        configs?: Array<BranchConfig>;
         err?: string;
       }
 }

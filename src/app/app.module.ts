@@ -15,6 +15,8 @@ import { StorageService } from './services/storage.service';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { ReposListComponent } from './repos-list/repos-list.component';
 import { BuildsListComponent } from './builds-list/builds-list.component';
+import { BranchConfigsListComponent } from './branch-configs-list/branch-configs-list.component';
+import { RepoComponent } from './repo/repo.component';
 
 
 
@@ -25,7 +27,9 @@ import { BuildsListComponent } from './builds-list/builds-list.component';
     UserDashComponent,
     AdminDashComponent,
     ReposListComponent,
-    BuildsListComponent
+    BuildsListComponent,
+    BranchConfigsListComponent,
+    RepoComponent
   ],
   imports: [
     BrowserModule,

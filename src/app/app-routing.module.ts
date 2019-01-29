@@ -10,6 +10,7 @@ import { StorageService } from './services/storage.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import { RepoComponent } from './repo/repo.component';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -63,7 +64,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/userDash', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'userDash', component: UserDashComponent, canActivate: [AuthGuard]},
-  {path :'adminDash', component: AdminDashComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'adminDash', component: AdminDashComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'repos/:id', component: RepoComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

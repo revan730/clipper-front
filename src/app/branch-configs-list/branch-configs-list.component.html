@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let branchConfig of branchConfigs | paginate: { id: 'branchConfigsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
+    {{branchConfig.branch}} - CI {{branchConfig.ciEnabled ? 'Enabled' : 'Disabled'}}
+  </li>
+</ul>
+<div class="has-text-centered">
+  <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+  <pagination-controls (pageChange)="getPage($event)" id="branchConfigsList"></pagination-controls>
+</div>
