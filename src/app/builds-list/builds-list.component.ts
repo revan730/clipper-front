@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'builds-list',
@@ -8,7 +11,7 @@ import { ClipperService } from '../services/clipper.service';
   styleUrls: ['./builds-list.component.css']
 })
 export class BuildsListComponent implements OnInit {
-  builds: Array<Clipper.Build>;
+  builds: Observable<Array<Clipper.Build>>;
   p: number = 1;
   total: number;
   loading: boolean;
@@ -29,10 +32,12 @@ export class BuildsListComponent implements OnInit {
        this.properties.branch, page, 10)
     .subscribe(res => {
       if (!res.err) {
-        this.loading = false;
-        this.builds = res.builds;
-        this.total = res.total;
-        this.p = page;
+        this.builds = Observable.of(res.builds)
+        .do(resObs => {
+          this.loading = false;
+          this.total = res.total;
+          this.p = page;
+        });
       }
     });
   }

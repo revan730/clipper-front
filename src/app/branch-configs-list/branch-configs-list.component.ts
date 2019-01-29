@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'branch-configs-list',
@@ -8,7 +11,7 @@ import { ClipperService } from '../services/clipper.service';
   styleUrls: ['./branch-configs-list.component.css']
 })
 export class BranchConfigsListComponent implements OnInit {
-  branchConfigs: Array<Clipper.BranchConfig>;
+  branchConfigs: Observable<Array<Clipper.BranchConfig>>;
   p: number = 1;
   total: number;
   loading: boolean;
@@ -29,10 +32,12 @@ export class BranchConfigsListComponent implements OnInit {
       page, 10)
     .subscribe(res => {
       if (!res.err) {
-        this.loading = false;
-        this.branchConfigs = res.configs;
-        this.total = res.total;
-        this.p = page;
+        this.branchConfigs = Observable.of(res.configs)
+        .do(resObs => {
+          this.loading = false;
+          this.total = res.total;
+          this.p = page;
+        });
       }
     });
   }

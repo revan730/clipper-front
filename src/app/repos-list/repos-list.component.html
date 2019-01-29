@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <li [routerLink]="['/repos', repo.repoID]" class="list-group-item" *ngFor="let repo of repos | paginate: { id: 'reposList', itemsPerPage: 10, currentPage: p, totalItems: total }">
+  <li [routerLink]="['/repos', repo.repoID]" class="list-group-item" *ngFor="let repo of repos | async | paginate: { id: 'reposList', itemsPerPage: 10, currentPage: p, totalItems: total }">
     {{repo.fullName}}
   </li>
 </ul>

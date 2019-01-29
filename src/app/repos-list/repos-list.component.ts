@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'repos-list',
@@ -8,7 +11,7 @@ import { ClipperService } from '../services/clipper.service';
   styleUrls: ['./repos-list.component.css']
 })
 export class ReposListComponent implements OnInit {
-  repos: Array<Clipper.Repo>;
+  repos: Observable<Array<Clipper.Repo>>;
   p: number = 1;
   total: number;
   loading: boolean;
@@ -26,10 +29,12 @@ export class ReposListComponent implements OnInit {
     this.clipper.getRepos(page, 10)
     .subscribe(res => {
       if (!res.err) {
-        this.loading = false;
-        this.repos = res.repos;
-        this.total = res.total;
-        this.p = page;
+        this.repos = Observable.of(res.repos)
+        .do(resObs => {
+          this.loading = false;
+          this.total = res.total;
+          this.p = page;
+        })
       }
     });
   }

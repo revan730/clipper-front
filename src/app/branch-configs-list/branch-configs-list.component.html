@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let branchConfig of branchConfigs | paginate: { id: 'branchConfigsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
+  <li class="list-group-item" *ngFor="let branchConfig of branchConfigs | async | paginate: { id: 'branchConfigsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
     {{branchConfig.branch}} - CI {{branchConfig.ciEnabled ? 'Enabled' : 'Disabled'}}
   </li>
 </ul>
