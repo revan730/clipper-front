@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
 
@@ -47,6 +47,29 @@ export class ClipperService {
       map(res => res as Clipper.RegisterResponse),
       map(res => (console.log(res), res))
     );
+  }
+  public getRepos(page: number, limit: number) {
+    const token = this.st.data['token'];
+    // TODO: Looks strange
+    if (token) {
+      const params = new HttpParams().set('page', String(page))
+      .set('limit', String(limit));
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        params,
+        headers
+      };
+      console.log('SENDING GET REPOS', params);
+      return this.http.get(
+        Clipper.GetReposRequest.link,
+        options
+      ).pipe(
+        map(res => res as Clipper.GetReposResponse),
+        map(res => (console.log(res), res))
+      )
+    }
   }
 
 }

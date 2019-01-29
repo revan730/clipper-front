@@ -8,9 +8,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserDashComponent } from './userdash/userdash.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { ClipperService } from './services/clipper.service';
 import { StorageService } from './services/storage.service';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import { ReposListComponent } from './repos-list/repos-list.component';
 
 
 
@@ -19,13 +22,15 @@ import { AdminDashComponent } from './admin-dash/admin-dash.component';
     AppComponent,
     LoginComponent,
     UserDashComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    ReposListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [ClipperService, StorageService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]

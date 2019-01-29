@@ -31,4 +31,16 @@ export namespace Clipper {
         user?: string;
         userID?: number;
       }
+      export namespace GetReposRequest {
+        export const link = genLink('repos');
+      }
+      export interface Repo {
+        repoID: number;
+        fullName: string;
+      }
+      export interface GetReposResponse {
+        total?: number;
+        repos?: Array<Repo>;
+        err?: string;
+      }
 }

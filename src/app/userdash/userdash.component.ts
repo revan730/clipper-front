@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReposListComponent } from '../repos-list/repos-list.component';
 
 @Component({
   selector: 'app-userdash',
@@ -6,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userdash.component.css']
 })
 export class UserDashComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
