@@ -48,6 +48,50 @@ export class ClipperService {
       map(res => (console.log(res), res))
     );
   }
+  public setSecret(secret: string) {
+    const token = this.st.data['token'];
+    if (token) {
+      const request: Clipper.PostSecretRequest = {
+        secret: secret
+      };
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.PostSecretRequest.link,
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.PostSecretResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
+  public setAccessToken(aToken: string) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const request: Clipper.PostAccessTokenRequest = {
+        token: aToken
+      };
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.PostAccessTokenRequest.link,
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.PostAccessTokenResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
   // TODO: token via interception
   public getRepos(page: number, limit: number) {
     const token = this.st.data['token'];

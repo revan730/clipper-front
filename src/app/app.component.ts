@@ -23,4 +23,14 @@ export class AppComponent {
     localStorage.removeItem('token');
     location.reload();
   }
+  goToSettings() {
+    this.router.navigateByUrl('/settings');
+  }
+  goToDashboard() {
+    if (this.ss.isUserAdmin()) {
+      this.router.navigateByUrl('/adminDash');
+    } else {
+      this.router.navigateByUrl('/userDash');
+    }
+  }
 }

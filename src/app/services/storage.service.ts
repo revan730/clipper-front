@@ -41,4 +41,10 @@ export class StorageService {
     }
     return this.tokenPayload.admin;
   }
+  getUserName(): string {
+    if (!this.tokenPayload) {
+      return null;
+    }
+    return this.tokenPayload.user;
+  }
 }

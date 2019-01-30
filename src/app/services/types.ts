@@ -79,4 +79,22 @@ export namespace Clipper {
         configs?: Array<BranchConfig>;
         err?: string;
       }
+      export namespace PostSecretRequest {
+        export const link = genLink('user/secret');
+      }
+      export interface PostSecretRequest {
+        secret: string;
+      }
+      export interface PostSecretResponse {
+        err?: string;
+      }
+      export namespace PostAccessTokenRequest {
+        export const link = genLink('user/accessToken');
+      }
+      export interface PostAccessTokenRequest {
+        token: string;
+      }
+      export interface PostAccessTokenResponse {
+        err?: string;
+      }
 }
