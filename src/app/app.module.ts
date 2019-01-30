@@ -18,6 +18,7 @@ import { BuildsListComponent } from './builds-list/builds-list.component';
 import { BranchConfigsListComponent } from './branch-configs-list/branch-configs-list.component';
 import { RepoComponent } from './repo/repo.component';
 import { SettingsComponent } from './settings/settings.component';
+import { CreateRepoComponent } from './create-repo/create-repo.component';
 
 
 
@@ -31,7 +32,8 @@ import { SettingsComponent } from './settings/settings.component';
     BuildsListComponent,
     BranchConfigsListComponent,
     RepoComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateRepoComponent
   ],
   imports: [
     BrowserModule,

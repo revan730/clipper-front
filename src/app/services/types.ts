@@ -51,6 +51,15 @@ export namespace Clipper {
       export namespace GetRepoRequest {
         export const link = (repoID) => genLink(`repos/${repoID}`);
       }
+      export namespace AddRepoRequest {
+        export const link = GetReposRequest.link;
+      }
+      export interface AddRepoRequest {
+        fullName: string;
+      }
+      export interface AddRepoResponse {
+        err?: string;
+      }
       export namespace GetBuildsRequest {
         export const link = (repoID) => genLink(`repos/${repoID}/builds`);
       }

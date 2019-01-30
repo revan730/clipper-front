@@ -92,6 +92,28 @@ export class ClipperService {
       );
     }
   }
+  public addRepo(fullName: string) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const request: Clipper.AddRepoRequest = {
+        fullName: fullName
+      };
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.AddRepoRequest.link,
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.AddRepoResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
   // TODO: token via interception
   public getRepos(page: number, limit: number) {
     const token = this.st.data['token'];

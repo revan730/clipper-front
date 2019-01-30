@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
 import { StorageService } from '../services/storage.service';
 
