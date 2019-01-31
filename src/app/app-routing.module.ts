@@ -12,6 +12,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { RepoComponent } from './repo/repo.component';
 import { SettingsComponent } from './settings/settings.component';
+import { BuildComponent } from './build/build.component';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -67,6 +68,7 @@ const routes: Routes = [
   {path: 'userDash', component: UserDashComponent, canActivate: [AuthGuard]},
   {path: 'adminDash', component: AdminDashComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'repos/:id', component: RepoComponent, canActivate: [AuthGuard]},
+  {path: 'builds/:id', component: BuildComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
 ];
 

@@ -157,6 +157,25 @@ export class ClipperService {
       )
     }
   }
+  public getBuild(buildID: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING GET BUILD', buildID);
+      return this.http.get(
+        Clipper.GetBuildRequest.link(buildID),
+        options
+      ).pipe(
+        map(res => res as Clipper.Build),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
   public getBuilds(repoID: number, branch: string, page: number, limit: number) {
     const token = this.st.data['token'];
     if (token) {

@@ -19,6 +19,7 @@ import { BranchConfigsListComponent } from './branch-configs-list/branch-configs
 import { RepoComponent } from './repo/repo.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CreateRepoComponent } from './create-repo/create-repo.component';
+import { BuildComponent } from './build/build.component';
 
 
 
@@ -33,7 +34,8 @@ import { CreateRepoComponent } from './create-repo/create-repo.component';
     BranchConfigsListComponent,
     RepoComponent,
     SettingsComponent,
-    CreateRepoComponent
+    CreateRepoComponent,
+    BuildComponent
   ],
   imports: [
     BrowserModule,

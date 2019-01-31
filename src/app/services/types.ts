@@ -71,6 +71,9 @@ export namespace Clipper {
         branch: string;
         stdout: string;
       }
+      export namespace GetBuildRequest {
+        export const link = (buildID) => genLink(`builds/${buildID}`);
+      }
       export interface GetBuildsResponse {
         total?: number;
         builds?: Array<Build>;
