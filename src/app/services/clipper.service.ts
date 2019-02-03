@@ -268,4 +268,48 @@ export class ClipperService {
       )
     }
   }
+  public getArtifacts(repoID: number, branch: string, page: number, limit: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const params = new HttpParams()
+      .set('branch', branch)
+      .set('page', String(page))
+      .set('limit', String(limit));
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        params,
+        headers
+      };
+      console.log('SENDING GET ARTIFACTS', params);
+      return this.http.get(
+        Clipper.GetArtifactsRequest.link(repoID),
+        options
+      ).pipe(
+        map(res => res as Clipper.GetArtifactsResponse),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
+  public addDeployment(dep: Clipper.PostDeploymentRequest) {
+    console.log(JSON.stringify(dep));
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.PostDeploymentRequest.link,
+        dep,
+        options
+      ).pipe(
+        map(res => res as Clipper.PostDeploymentResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
 }

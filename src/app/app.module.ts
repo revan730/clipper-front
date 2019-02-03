@@ -22,6 +22,7 @@ import { CreateRepoComponent } from './create-repo/create-repo.component';
 import { BuildComponent } from './build/build.component';
 import { CreateBranchComponent } from './create-branch/create-branch.component';
 import { DeploymentsListComponent } from './deployments-list/deployments-list.component';
+import { CreateDeploymentComponent } from './create-deployment/create-deployment.component';
 
 
 
@@ -39,7 +40,8 @@ import { DeploymentsListComponent } from './deployments-list/deployments-list.co
     CreateRepoComponent,
     BuildComponent,
     CreateBranchComponent,
-    DeploymentsListComponent
+    DeploymentsListComponent,
+    CreateDeploymentComponent
   ],
   imports: [
     BrowserModule,

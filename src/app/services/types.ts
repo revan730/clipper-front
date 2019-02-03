@@ -136,4 +136,30 @@ export namespace Clipper {
         deployments?: Array<Deployment>;
         err?: string;
       }
+      export interface Artifact {
+        ID: number;
+        name: number;
+      }
+      export namespace GetArtifactsRequest {
+        export const link = (repoID) => genLink(`repos/${repoID}/artifacts`);
+      }
+      export interface GetArtifactsResponse {
+        total?: number;
+        artifacts?: Array<Artifact>;
+        err?: string;
+      }
+      export namespace PostDeploymentRequest {
+        export const link = genLink('admin/deployments');
+      }
+      export interface PostDeploymentRequest {
+        branch: string;
+        repoID: number;
+        artifactID: number;
+        k8sName: string;
+        manifest: string;
+        replicas: number;
+      }
+      export interface PostDeploymentResponse {
+        err?: string;
+      }
 }

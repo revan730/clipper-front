@@ -1,0 +1,37 @@
+<div class="container" style="padding-top: 2%">
+  <div class="card">
+    <div class="card-body">
+      <form #repoFullNameForm style="margin-bottom: 2%">
+        <div class="form-group">
+          <label for="inputk8sName">Deployment name</label>
+          <input class="form-control" name="reglog_depname" id="reglog_depname" placeholder="ex. red-dragon" [(ngModel)]="k8sName">
+          <label for="inputBranch">Branch</label>
+          <input class="form-control" name="reglog_branch" id="reglog_branch" placeholder="ex. dev" [(ngModel)]="branch">
+          <label for="selectRepo">Repo</label>
+          <select class="form-control" (change)="loadRepoArtifacts($event.target.value)" [(ngModel)]="selectedRepo" id="repoSelect">
+            <option [value]="repo.repoID" *ngFor="let repo of repos">{{repo.fullName}}</option>
+          </select>
+          <label for="selectArtifact">Artifacts</label>
+          <select class="form-control" (change)="selectArtifact($event.target.value)" [(ngModel)]="selectedArtifact" id="artifactSelect">
+            <option [value]="artifact.id" *ngFor="let artifact of artifacts">{{artifact.name}}</option>
+          </select>
+          <label for="inputReplicas">Replicas</label>
+          <input class="form-control" name="reglog_replicas" id="reglog_replicas" placeholder="1" [(ngModel)]="replicas">
+          <label for="inputManifest">Manifest</label>
+          <input class="form-control" name="reglog_manifest" id="reglog_manifest" placeholder="Refer to docs for ex." [(ngModel)]="manifest">
+        </div>
+        <div style="display: flex; justify-content:space-between">
+          <button class="btn btn-info" (click)="onDeploymentCreate()">Create</button>
+        </div>
+        <div *ngIf="createSuccess" class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Deployment created
+        </div>
+        <div *ngIf="createError" class="alert alert-error alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Error: {{createError}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
