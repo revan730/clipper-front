@@ -200,6 +200,28 @@ export class ClipperService {
       )
     }
   }
+  public addBranchConfig(branch: string, repoID: number) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const request: Clipper.AddBranchConfigRequest = {
+        branch: branch
+      };
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.AddBranchConfigRequest.link(repoID),
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.AddBranchConfigResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
   public getBranchConfigs(repoID: number, page: number, limit: number) {
     const token = this.st.data['token'];
     if (token) {

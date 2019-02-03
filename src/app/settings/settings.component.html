@@ -14,9 +14,9 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           Webhook secret saved
         </div>
-        <div *ngIf="webhookSecretErr" class="alert alert-error alert-dismissible" role="alert">
+        <div *ngIf="webhookSecretError" class="alert alert-error alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          Error: {{webhookSecretErr}}
+          Error: {{webhookSecretError}}
         </div>
       </form>
       <form #accessTokenForm>

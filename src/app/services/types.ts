@@ -91,6 +91,15 @@ export namespace Clipper {
         configs?: Array<BranchConfig>;
         err?: string;
       }
+      export namespace AddBranchConfigRequest {
+        export const link = GetBranchConfigsRequest.link;
+      }
+      export interface AddBranchConfigRequest {
+        branch: string;
+      }
+      export interface AddBranchConfigResponse {
+        err?: string;
+      }
       export namespace PostSecretRequest {
         export const link = genLink('user/secret');
       }
