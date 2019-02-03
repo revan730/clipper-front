@@ -245,4 +245,27 @@ export class ClipperService {
       )
     }
   }
+  public getDeployments(page: number, limit: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const params = new HttpParams()
+      .set('page', String(page))
+      .set('limit', String(limit));
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        params,
+        headers
+      };
+      console.log('SENDING GET DEPLOYMENTS', params);
+      return this.http.get(
+        Clipper.GetDeploymentsRequest.link,
+        options
+      ).pipe(
+        map(res => res as Clipper.GetDeploymentsResponse),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
 }

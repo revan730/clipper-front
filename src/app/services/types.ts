@@ -1,3 +1,4 @@
+import { NumberValueAccessor } from "@angular/forms/src/directives";
 
 export namespace Clipper {
     export const globalLink = 'http://clipper.revan730.tk/api/v1/';
@@ -116,6 +117,23 @@ export namespace Clipper {
         token: string;
       }
       export interface PostAccessTokenResponse {
+        err?: string;
+      }
+      export interface Deployment {
+        ID: number;
+        branch: string;
+        repoID: number;
+        artifactID: number;
+        k8sName: string;
+        manifest: string;
+        replicas: number;
+      }
+      export namespace GetDeploymentsRequest {
+        export const link = genLink('admin/deployments');
+      }
+      export interface GetDeploymentsResponse {
+        total?: number;
+        deployments?: Array<Deployment>;
         err?: string;
       }
 }

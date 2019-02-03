@@ -21,6 +21,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { CreateRepoComponent } from './create-repo/create-repo.component';
 import { BuildComponent } from './build/build.component';
 import { CreateBranchComponent } from './create-branch/create-branch.component';
+import { DeploymentsListComponent } from './deployments-list/deployments-list.component';
 
 
 
@@ -37,7 +38,8 @@ import { CreateBranchComponent } from './create-branch/create-branch.component';
     SettingsComponent,
     CreateRepoComponent,
     BuildComponent,
-    CreateBranchComponent
+    CreateBranchComponent,
+    DeploymentsListComponent
   ],
   imports: [
     BrowserModule,
