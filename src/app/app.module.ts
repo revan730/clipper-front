@@ -23,6 +23,8 @@ import { BuildComponent } from './build/build.component';
 import { CreateBranchComponent } from './create-branch/create-branch.component';
 import { DeploymentsListComponent } from './deployments-list/deployments-list.component';
 import { CreateDeploymentComponent } from './create-deployment/create-deployment.component';
+import { DeploymentComponent } from './deployment/deployment.component';
+import { RevisionsListComponent } from './revisions-list/revisions-list.component';
 
 
 
@@ -41,7 +43,9 @@ import { CreateDeploymentComponent } from './create-deployment/create-deployment
     BuildComponent,
     CreateBranchComponent,
     DeploymentsListComponent,
-    CreateDeploymentComponent
+    CreateDeploymentComponent,
+    DeploymentComponent,
+    RevisionsListComponent
   ],
   imports: [
     BrowserModule,
