@@ -121,12 +121,16 @@ export namespace Clipper {
       }
       export interface Deployment {
         ID: number;
-        branch: string;
-        repoID: number;
-        artifactID: number;
-        k8sName: string;
-        manifest: string;
-        replicas: number;
+        Branch: string;
+        RepoID: number;
+        ArtifactID: number;
+        K8SName: string;
+        Manifest: string;
+        isInitialized: boolean;
+        Replicas: number;
+      }
+      export namespace GetDeploymentRequest {
+        export const link = (depID) => genLink(`admin/deployments/${depID}`);
       }
       export namespace GetDeploymentsRequest {
         export const link = genLink('admin/deployments');

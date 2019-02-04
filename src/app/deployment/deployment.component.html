@@ -1,3 +1,29 @@
-<p>
-  deployment works!
-</p>
+<h2>
+  {{this.deployment.k8sName}}
+</h2>
+  <div class="halves">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Revisions:</h5>
+        <revisions-list [properties]="{depID: this.deployment.ID}"></revisions-list>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Details:</h5>
+        <ul class="list-group">
+          <li class="list-group-item">{{this.deployment.IsInitialized ? '' : 'Not'}} initialized</li>
+          <li class="list-group-item">Replicas: {{this.deployment.Replicas}}</li>
+          <li class="list-group-item">Repo: {{this.repo.fullName}}</li>
+          <li class="list-group-item">Branch: {{this.deployment.Branch}}</li>
+          <li class="list-group-item">Manifest: <pre class="pre-scrollable" style="background-color: black; color: antiquewhite;"><code>{{this.deployment.Manifest}}</code></pre></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Scale deployment:</h5>
+        <!----<create-branch [properties]="{repoID: this.repo.repoID}"--><!----/create-branch--->
+      </div>
+    </div>
+  </div>

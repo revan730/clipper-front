@@ -245,6 +245,25 @@ export class ClipperService {
       )
     }
   }
+  public getDeployment(depID: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING GET DEPLOYMENT', depID);
+      return this.http.get(
+        Clipper.GetDeploymentRequest.link(depID),
+        options
+      ).pipe(
+        map(res => res as Clipper.Deployment),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
   public getDeployments(page: number, limit: number) {
     const token = this.st.data['token'];
     if (token) {
