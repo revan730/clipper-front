@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li [routerLink]="['/revisions', rev.ID]" class="list-group-item" *ngFor="let rev of revisions | async | paginate: { id: 'revisionsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
+    {{rev.date}}
+  </li>
+</ul>
+<div class="has-text-centered">
+  <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+  <pagination-controls (pageChange)="getPage($event)" id="revisionsList"></pagination-controls>
+</div>

@@ -162,4 +162,20 @@ export namespace Clipper {
       export interface PostDeploymentResponse {
         err?: string;
       }
+      export interface Revision {
+        ID: number;
+        deploymentID: number;
+        artifactID: number;
+        date: Date;
+        replicas: number;
+        stdout: string;
+      }
+      export namespace GetRevisionsRequest {
+        export const link = (depID) => genLink(`admin/deployments/${depID}/revisions`);
+      }
+      export interface GetRevisionsResponse {
+        total?: number;
+        revisions?: Array<Revision>;
+        err?: string;
+      }
 }
