@@ -16,7 +16,7 @@
             <option [value]="artifact.id" *ngFor="let artifact of artifacts">{{artifact.name}}</option>
           </select>
           <label for="inputReplicas">Replicas</label>
-          <input class="form-control" name="reglog_replicas" id="reglog_replicas" placeholder="1" [(ngModel)]="replicas">
+          <input class="form-control" type="number" name="reglog_replicas" id="reglog_replicas" placeholder="1" [(ngModel)]="replicas">
           <label for="inputManifest">Manifest</label>
           <input class="form-control" name="reglog_manifest" id="reglog_manifest" placeholder="Refer to docs for ex." [(ngModel)]="manifest">
         </div>

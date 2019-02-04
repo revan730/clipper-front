@@ -293,7 +293,6 @@ export class ClipperService {
     }
   }
   public addDeployment(dep: Clipper.PostDeploymentRequest) {
-    console.log(JSON.stringify(dep));
     const apiToken = this.st.data['token'];
     if (apiToken) {
       const headers = new HttpHeaders({

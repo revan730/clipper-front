@@ -38,7 +38,6 @@ export class CreateDeploymentComponent implements OnInit {
     });
   }
   loadRepoArtifacts(i: string) {
-    console.log(typeof i);
     this.repoID = Number(i);
     this.clipper.getArtifacts(this.repoID, "master", 1, 20)
     .subscribe(res => {
@@ -49,7 +48,6 @@ export class CreateDeploymentComponent implements OnInit {
     })
   }
   selectArtifact(i: string) {
-    console.log("selecting artifact with id "+i);
     this.artifactID = Number(i);
   }
   onDeploymentCreate() {
@@ -59,7 +57,7 @@ export class CreateDeploymentComponent implements OnInit {
       repoID: this.repoID,
       artifactID: this.artifactID,
       manifest: this.manifest,
-      replicas: Number(this.replicas)
+      replicas: this.replicas
     }
     this.clipper.addDeployment(dep)
     .subscribe(res => {
