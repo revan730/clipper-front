@@ -191,4 +191,13 @@ export namespace Clipper {
       export interface ScaleDeploymentResponse {
         err?: string;
       }
+      export namespace ChangeDeploymentImageRequest {
+        export const link = (depID) => genLink(`admin/deployments/${depID}/image`);
+      }
+      export interface ChangeDeploymentImageRequest {
+        imageID: number;
+      }
+      export interface ChangeDeploymentImageResponse {
+        err?: string;
+      }
 }

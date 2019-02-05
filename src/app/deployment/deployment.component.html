@@ -48,20 +48,20 @@
         <form #imageForm style="margin-bottom: 2%">
           <div class="form-group">
               <label for="selectArtifact">Artifacts</label>
-              <select class="form-control" [(ngModel)]="artifactID" id="artifactSelect">
+              <select class="form-control" (change)="selectArtifact($event.target.value)" [(ngModel)]="artifactID" id="artifactSelect">
                 <option [value]="artifact.id" *ngFor="let artifact of artifacts">{{artifact.name}}</option>
               </select>
           </div>
           <div style="display: flex; justify-content:space-between">
-            <button class="btn btn-info" (click)="onScale()">Scale</button>
+            <button class="btn btn-info" (click)="onChangeImage()">Change</button>
           </div>
-          <div *ngIf="scaleSuccess" class="alert alert-success alert-dismissible" role="alert">
+          <div *ngIf="imageSuccess" class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            Deployment scaled successfully
+            Image changed successfully
           </div>
-          <div *ngIf="scaleError" class="alert alert-error alert-dismissible" role="alert">
+          <div *ngIf="imageError" class="alert alert-error alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            Error: {{scaleError}}
+            Error: {{imageError}}
           </div>
         </form>
       </div>

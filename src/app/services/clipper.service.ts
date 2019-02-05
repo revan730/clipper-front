@@ -375,4 +375,26 @@ export class ClipperService {
       );
     }
   }
+  public changeDeploymentImage(depID: number, imageID: number) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const request: Clipper.ChangeDeploymentImageRequest = {
+        imageID: imageID
+      };
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.ChangeDeploymentImageRequest.link(depID),
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.ChangeDeploymentImageResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
 }

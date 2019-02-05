@@ -14,6 +14,8 @@ export class DeploymentComponent implements OnInit {
   repo: Clipper.Repo;
   scaleSuccess: boolean = false;
   scaleError: string = null;
+  imageSuccess: boolean = false;
+  imageError: string = null;
   replicas: number;
   artifacts: Array<Clipper.Artifact>;
   artifactID: number;
@@ -42,7 +44,11 @@ export class DeploymentComponent implements OnInit {
     this.clipper.getRepo(repoID)
     .subscribe(res => {
       this.repo = res;
+      this.loadRepoArtifacts();
     });
+  }
+  selectArtifact(artifactID: number) {
+    this.artifactID = artifactID;
   }
   loadRepoArtifacts() {
     this.clipper.getArtifacts(this.repo.repoID, "master", 1, 20)
@@ -61,7 +67,11 @@ export class DeploymentComponent implements OnInit {
     })
   }
   onChangeImage() {
-    console.log(this.artifactID);
+    this.clipper.changeDeploymentImage(this.deploymentID, this.artifactID)
+    .subscribe((res) => {
+      this.imageError = res.err;
+      this.imageSuccess = !res.err;
+    })
   }
 
 }
