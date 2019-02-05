@@ -15,6 +15,8 @@ export class DeploymentComponent implements OnInit {
   scaleSuccess: boolean = false;
   scaleError: string = null;
   replicas: number;
+  artifacts: Array<Clipper.Artifact>;
+  artifactID: number;
 
   constructor(
     public clipper: ClipperService,
@@ -42,12 +44,24 @@ export class DeploymentComponent implements OnInit {
       this.repo = res;
     });
   }
+  loadRepoArtifacts() {
+    this.clipper.getArtifacts(this.repo.repoID, "master", 1, 20)
+    .subscribe(res => {
+      if (!res.err) {
+        this.artifacts = res.artifacts;
+        console.log(this.artifacts);
+      }
+    })
+  }
   onScale() {
     this.clipper.scaleDeployment(this.deploymentID, this.replicas)
     .subscribe((res) => {
       this.scaleError = res.err;
       this.scaleSuccess = !res.err;
     })
+  }
+  onChangeImage() {
+    console.log(this.artifactID);
   }
 
 }
