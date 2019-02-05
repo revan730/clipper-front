@@ -14,11 +14,16 @@ export class DeploymentComponent implements OnInit {
   repo: Clipper.Repo;
   scaleSuccess: boolean = false;
   scaleError: string = null;
+
   imageSuccess: boolean = false;
   imageError: string = null;
   replicas: number;
   artifacts: Array<Clipper.Artifact>;
   artifactID: number;
+
+  manifest: string;
+  manifestSuccess: boolean = false;
+  manifestError: string = null;
 
   constructor(
     public clipper: ClipperService,
@@ -71,6 +76,13 @@ export class DeploymentComponent implements OnInit {
     .subscribe((res) => {
       this.imageError = res.err;
       this.imageSuccess = !res.err;
+    })
+  }
+  onChangeManifest() {
+    this.clipper.changeDeploymentManifest(this.deploymentID, this.manifest)
+    .subscribe((res) => {
+      this.manifestError = res.err;
+      this.manifestSuccess = !res.err;
     })
   }
 

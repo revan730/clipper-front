@@ -397,4 +397,26 @@ export class ClipperService {
       );
     }
   }
+  public changeDeploymentManifest(depID: number, manifest: string) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const request: Clipper.ChangeDeploymentManifestRequest = {
+        manifest: manifest
+      };
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.ChangeDeploymentManifestRequest.link(depID),
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.ChangeDeploymentManifestResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
 }

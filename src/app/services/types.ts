@@ -200,4 +200,13 @@ export namespace Clipper {
       export interface ChangeDeploymentImageResponse {
         err?: string;
       }
+      export namespace ChangeDeploymentManifestRequest {
+        export const link = (depID) => genLink(`admin/deployments/${depID}/manifest`);
+      }
+      export interface ChangeDeploymentManifestRequest {
+        manifest: string;
+      }
+      export interface ChangeDeploymentManifestResponse {
+        err?: string;
+      }
 }

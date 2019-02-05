@@ -1,14 +1,14 @@
 <h2>
   {{this.deployment.k8sName}}
 </h2>
-  <div class="halves">
-    <div class="card">
+  <div class="grid-container">
+    <div class="card" style="grid-column: 1">
       <div class="card-body">
         <h5 class="card-title">Revisions:</h5>
         <revisions-list [properties]="{depID: this.deployment.ID}"></revisions-list>
       </div>
     </div>
-    <div class="card">
+    <div class="card" style="grid-column: 2 / span 2">
       <div class="card-body">
         <h5 class="card-title">Details:</h5>
         <ul class="list-group">
@@ -62,6 +62,28 @@
           <div *ngIf="imageError" class="alert alert-error alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             Error: {{imageError}}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Change manifest:</h5>
+        <form #manifestForm style="margin-bottom: 2%">
+          <div class="form-group">
+            <label for="inputManifest">Manifest</label>
+            <input class="form-control" name="reglog_manifest" id="reglog_manifest" [(ngModel)]="manifest">
+          </div>
+          <div style="display: flex; justify-content:space-between">
+            <button class="btn btn-info" (click)="onChangeManifest()">Change</button>
+          </div>
+          <div *ngIf="manifestSuccess" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Manifest changed successfully
+          </div>
+          <div *ngIf="manifestError" class="alert alert-error alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Error: {{manifestError}}
           </div>
         </form>
       </div>
