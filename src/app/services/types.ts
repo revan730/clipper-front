@@ -182,4 +182,13 @@ export namespace Clipper {
         revisions?: Array<Revision>;
         err?: string;
       }
+      export namespace ScaleDeploymentRequest {
+        export const link = (depID) => genLink(`admin/deployments/${depID}/scale`);
+      }
+      export interface ScaleDeploymentRequest {
+        replicas: number;
+      }
+      export interface ScaleDeploymentResponse {
+        err?: string;
+      }
 }

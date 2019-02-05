@@ -353,4 +353,26 @@ export class ClipperService {
       )
     }
   }
+  public scaleDeployment(depID: number, replicas: number) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const request: Clipper.ScaleDeploymentRequest = {
+        replicas: replicas
+      };
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.ScaleDeploymentRequest.link(depID),
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.ScaleDeploymentResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
 }

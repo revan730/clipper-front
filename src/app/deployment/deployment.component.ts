@@ -12,6 +12,9 @@ export class DeploymentComponent implements OnInit {
   deploymentID: number;
   deployment: Clipper.Deployment;
   repo: Clipper.Repo;
+  scaleSuccess: boolean = false;
+  scaleError: string = null;
+  replicas: number;
 
   constructor(
     public clipper: ClipperService,
@@ -38,6 +41,13 @@ export class DeploymentComponent implements OnInit {
     .subscribe(res => {
       this.repo = res;
     });
+  }
+  onScale() {
+    this.clipper.scaleDeployment(this.deploymentID, this.replicas)
+    .subscribe((res) => {
+      this.scaleError = res.err;
+      this.scaleSuccess = !res.err;
+    })
   }
 
 }
