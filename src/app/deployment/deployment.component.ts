@@ -48,7 +48,7 @@ export class DeploymentComponent implements OnInit {
     });
   }
   selectArtifact(artifactID: number) {
-    this.artifactID = artifactID;
+    this.artifactID = Number(artifactID);
   }
   loadRepoArtifacts() {
     this.clipper.getArtifacts(this.repo.repoID, "master", 1, 20)
