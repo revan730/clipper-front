@@ -209,4 +209,7 @@ export namespace Clipper {
       export interface ChangeDeploymentManifestResponse {
         err?: string;
       }
+      export namespace GetRevisionRequest {
+        export const link = (revID) => genLink(`admin/revisions/${revID}`);
+      }
 }

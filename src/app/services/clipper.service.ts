@@ -419,4 +419,23 @@ export class ClipperService {
       );
     }
   }
+  public getRevision(revID: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING GET REVISION', revID);
+      return this.http.get(
+        Clipper.GetRevisionRequest.link(revID),
+        options
+      ).pipe(
+        map(res => res as Clipper.Revision),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
 }

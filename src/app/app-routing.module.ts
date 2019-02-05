@@ -14,6 +14,7 @@ import { RepoComponent } from './repo/repo.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BuildComponent } from './build/build.component';
 import { DeploymentComponent } from './deployment/deployment.component';
+import { RevisionComponent } from './revision/revision.component';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -71,7 +72,8 @@ const routes: Routes = [
   {path: 'repos/:id', component: RepoComponent, canActivate: [AuthGuard]},
   {path: 'builds/:id', component: BuildComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
-  {path: 'deployments/:id', component: DeploymentComponent, canActivate: [AuthGuard, AdminGuard]}
+  {path: 'deployments/:id', component: DeploymentComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'revisions/:id', component: RevisionComponent, canActivate: [AuthGuard, AdminGuard]}
 ];
 
 @NgModule({
