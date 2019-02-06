@@ -157,6 +157,25 @@ export class ClipperService {
       )
     }
   }
+  public deleteRepo(repoID: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING DELETE REPO', repoID);
+      return this.http.delete(
+        Clipper.DeleteRepoRequest.link(repoID),
+        options
+      ).pipe(
+        map(res => res as Clipper.DeleteRepoResponse),
+        map(res => (console.log(res), res))
+      )
+    }
+  }
   public getBuild(buildID: number) {
     const token = this.st.data['token'];
     if (token) {

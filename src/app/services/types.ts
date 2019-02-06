@@ -212,4 +212,10 @@ export namespace Clipper {
       export namespace GetRevisionRequest {
         export const link = (revID) => genLink(`admin/revisions/${revID}`);
       }
+      export namespace DeleteRepoRequest {
+        export const link = (repoID) => genLink(`repos/${repoID}`);
+      }
+      export interface DeleteRepoResponse {
+        err?: string;
+      }
 }

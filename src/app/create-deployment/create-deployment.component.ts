@@ -12,6 +12,8 @@ import 'rxjs/add/observable/of';
 export class CreateDeploymentComponent implements OnInit {
   k8sName: string;
   branch: string;
+  selectedRepo: number;
+  selectedArtifact: number;
   repos: Array<Clipper.Repo>;
   repoID: number;
   artifacts: Array<Clipper.Artifact>;

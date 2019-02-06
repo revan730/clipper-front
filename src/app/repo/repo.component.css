@@ -1,12 +1,4 @@
-.halves {
-    display: flex;
-  }
-  .halves > div {
-    width: calc(50%);
-  }
-  .halves > :first-child {
-    margin-right: 10px;
-  }
-  .halves > :last-child {
-    margin-left: 10px;
-  }
+.grid-container {
+  display: grid;
+  grid-gap: 2%;
+}

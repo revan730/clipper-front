@@ -1,5 +1,5 @@
 <h2>
-  {{this.deployment.k8sName}}
+  {{this.deployment.K8SName}}
 </h2>
   <div class="grid-container">
     <div class="card" style="grid-column: 1">
@@ -12,7 +12,7 @@
       <div class="card-body">
         <h5 class="card-title">Details:</h5>
         <ul class="list-group">
-          <li class="list-group-item">{{this.deployment.IsInitialized ? '' : 'Not'}} initialized</li>
+          <li class="list-group-item">{{this.deployment.isInitialized ? '' : 'Not'}} initialized</li>
           <li class="list-group-item">Replicas: {{this.deployment.Replicas}}</li>
           <li class="list-group-item">Repo: {{this.repo.fullName}}</li>
           <li class="list-group-item">Branch: {{this.deployment.Branch}}</li>

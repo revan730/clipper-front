@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
 
@@ -11,9 +11,11 @@ import { ClipperService } from '../services/clipper.service';
 export class RepoComponent implements OnInit {
   repoID: number;
   repo: Clipper.Repo;
+  deleteError: string = null;
 
   constructor(
     public clipper: ClipperService,
+    private router: Router,
     private route: ActivatedRoute
     ) { }
 
@@ -30,5 +32,14 @@ export class RepoComponent implements OnInit {
     .subscribe(res => {
       this.repo = res;
     });
+  }
+  onRepoDelete() {
+    this.clipper.deleteRepo(this.repoID)
+    .subscribe(res => {
+      this.deleteError = res.err;
+      if (!res.err) {
+        this.router.navigateByUrl('/userDash');
+      }
+    })
   }
 }
