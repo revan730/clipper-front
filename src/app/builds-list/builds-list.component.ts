@@ -12,14 +12,14 @@ import 'rxjs/add/operator/do';
 })
 export class BuildsListComponent implements OnInit {
   builds: Observable<Array<Clipper.Build>>;
-  p: number = 1;
+  p = 1;
   total: number;
   loading: boolean;
-  @Input() properties: any = {repoID: 0, branch: 'master'}
+  @Input() properties: any = {repoID: 0, branch: 'master'};
 
   constructor(
     public clipper: ClipperService,
-  ) { 
+  ) {
   }
 
   ngOnInit() {

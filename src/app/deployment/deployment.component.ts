@@ -12,17 +12,17 @@ export class DeploymentComponent implements OnInit {
   deploymentID: number;
   deployment: Clipper.Deployment;
   repo: Clipper.Repo;
-  scaleSuccess: boolean = false;
+  scaleSuccess = false;
   scaleError: string = null;
 
-  imageSuccess: boolean = false;
+  imageSuccess = false;
   imageError: string = null;
   replicas: number;
   artifacts: Array<Clipper.Artifact>;
   artifactID: number;
 
   manifest: string;
-  manifestSuccess: boolean = false;
+  manifestSuccess = false;
   manifestError: string = null;
 
   constructor(
@@ -43,7 +43,7 @@ export class DeploymentComponent implements OnInit {
     .subscribe((res) => {
       this.deployment = res;
       this.loadRepo(res.RepoID);
-    })
+    });
   }
   loadRepo(repoID: number) {
     this.clipper.getRepo(repoID)
@@ -56,34 +56,34 @@ export class DeploymentComponent implements OnInit {
     this.artifactID = Number(artifactID);
   }
   loadRepoArtifacts() {
-    this.clipper.getArtifacts(this.repo.repoID, "master", 1, 20)
+    this.clipper.getArtifacts(this.repo.repoID, 'master', 1, 20)
     .subscribe(res => {
       if (!res.err) {
         this.artifacts = res.artifacts;
         console.log(this.artifacts);
       }
-    })
+    });
   }
   onScale() {
     this.clipper.scaleDeployment(this.deploymentID, this.replicas)
     .subscribe((res) => {
       this.scaleError = res.err;
       this.scaleSuccess = !res.err;
-    })
+    });
   }
   onChangeImage() {
     this.clipper.changeDeploymentImage(this.deploymentID, this.artifactID)
     .subscribe((res) => {
       this.imageError = res.err;
       this.imageSuccess = !res.err;
-    })
+    });
   }
   onChangeManifest() {
     this.clipper.changeDeploymentManifest(this.deploymentID, this.manifest)
     .subscribe((res) => {
       this.manifestError = res.err;
       this.manifestSuccess = !res.err;
-    })
+    });
   }
 
 }

@@ -12,7 +12,7 @@ import 'rxjs/add/operator/do';
 })
 export class DeploymentsListComponent implements OnInit {
   deployments: Observable<Array<Clipper.Deployment>>;
-  p: number = 1;
+  p = 1;
   total: number;
   loading: boolean;
 
@@ -33,7 +33,7 @@ export class DeploymentsListComponent implements OnInit {
           this.loading = false;
           this.total = res.total;
           this.p = page;
-        })
+        });
       }
     });
   }

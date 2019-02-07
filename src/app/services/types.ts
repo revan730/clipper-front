@@ -1,4 +1,4 @@
-import { NumberValueAccessor } from "@angular/forms/src/directives";
+import { NumberValueAccessor } from '@angular/forms/src/directives';
 
 export namespace Clipper {
     export const globalLink = 'http://clipper.revan730.tk/api/v1/';
@@ -47,7 +47,7 @@ export namespace Clipper {
       export interface GetRepoResponse {
         repoID?: number;
         fullName?: string;
-        err?: string
+        err?: string;
       }
       export namespace GetRepoRequest {
         export const link = (repoID) => genLink(`repos/${repoID}`);

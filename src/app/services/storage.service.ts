@@ -6,7 +6,7 @@ import * as jwt from 'jsonwebtoken';
 @Injectable()
 export class StorageService {
   public data: any;
-  private tokenPayload: Clipper.TokenPayload
+  private tokenPayload: Clipper.TokenPayload;
   constructor(
 ) {
     this.data = {};
@@ -37,7 +37,7 @@ export class StorageService {
   }
   isUserAdmin(): boolean {
     if (!this.tokenPayload) {
-      return false
+      return false;
     }
     return this.tokenPayload.admin;
   }

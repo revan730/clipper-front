@@ -12,10 +12,10 @@ import 'rxjs/add/operator/do';
 })
 export class RevisionsListComponent implements OnInit {
   revisions: Observable<Array<Clipper.Revision>>;
-  p: number = 1;
+  p = 1;
   total: number;
   loading: boolean;
-  @Input() properties: any = {depID: 0}
+  @Input() properties: any = {depID: 0};
 
   constructor(
     public clipper: ClipperService,
@@ -35,7 +35,7 @@ export class RevisionsListComponent implements OnInit {
           this.loading = false;
           this.total = res.total;
           this.p = page;
-        })
+        });
       }
     });
   }

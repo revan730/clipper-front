@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister() {
-    console.log(this.clipper)
+    console.log(this.clipper);
     this.clipper.register(this.username, this.password)
     .subscribe(res => {
       this.error = res.err;

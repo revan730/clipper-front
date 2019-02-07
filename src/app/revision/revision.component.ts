@@ -27,7 +27,7 @@ export class RevisionComponent implements OnInit {
     this.clipper.getRevision(this.revisionID)
     .subscribe((res) => {
       this.revision = res;
-    })
+    });
   }
 
 }

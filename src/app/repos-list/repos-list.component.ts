@@ -12,7 +12,7 @@ import 'rxjs/add/operator/do';
 })
 export class ReposListComponent implements OnInit {
   repos: Observable<Array<Clipper.Repo>>;
-  p: number = 1;
+  p = 1;
   total: number;
   loading: boolean;
 
@@ -34,7 +34,7 @@ export class ReposListComponent implements OnInit {
           this.loading = false;
           this.total = res.total;
           this.p = page;
-        })
+        });
       }
     });
   }

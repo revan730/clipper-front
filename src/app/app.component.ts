@@ -16,7 +16,7 @@ export class AppComponent {
     private router: Router,
     public cs: ClipperService
   ) {
-    
+
   }
   logout() {
     this.ss.data['token'] = null;

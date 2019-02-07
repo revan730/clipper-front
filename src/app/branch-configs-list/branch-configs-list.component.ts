@@ -12,14 +12,14 @@ import 'rxjs/add/operator/do';
 })
 export class BranchConfigsListComponent implements OnInit {
   branchConfigs: Observable<Array<Clipper.BranchConfig>>;
-  p: number = 1;
+  p = 1;
   total: number;
   loading: boolean;
-  @Input() properties: any = {repoID: 0}
+  @Input() properties: any = {repoID: 0};
 
   constructor(
     public clipper: ClipperService,
-  ) { 
+  ) {
   }
 
   ngOnInit() {

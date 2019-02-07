@@ -135,7 +135,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.GetReposResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public getRepo(repoID: number) {
@@ -154,7 +154,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.Repo),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public deleteRepo(repoID: number) {
@@ -173,7 +173,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.DeleteRepoResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public getBuild(buildID: number) {
@@ -192,7 +192,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.Build),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public getBuilds(repoID: number, branch: string, page: number, limit: number) {
@@ -216,7 +216,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.GetBuildsResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public addBranchConfig(branch: string, repoID: number) {
@@ -261,7 +261,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.GetBranchConfigsResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public getDeployment(depID: number) {
@@ -280,7 +280,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.Deployment),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public getDeployments(page: number, limit: number) {
@@ -303,7 +303,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.GetDeploymentsResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public getArtifacts(repoID: number, branch: string, page: number, limit: number) {
@@ -327,7 +327,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.GetArtifactsResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public addDeployment(dep: Clipper.PostDeploymentRequest) {
@@ -369,7 +369,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.GetRevisionsResponse),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
   public scaleDeployment(depID: number, replicas: number) {
@@ -454,7 +454,7 @@ export class ClipperService {
       ).pipe(
         map(res => res as Clipper.Revision),
         map(res => (console.log(res), res))
-      )
+      );
     }
   }
 }

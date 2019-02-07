@@ -19,7 +19,7 @@ export class CreateDeploymentComponent implements OnInit {
   artifacts: Array<Clipper.Artifact>;
   artifactID: number;
   manifest: string;
-  createSuccess: boolean = false;
+  createSuccess = false;
   createError: string = null;
   replicas: number;
 
@@ -41,13 +41,13 @@ export class CreateDeploymentComponent implements OnInit {
   }
   loadRepoArtifacts(i: string) {
     this.repoID = Number(i);
-    this.clipper.getArtifacts(this.repoID, "master", 1, 20)
+    this.clipper.getArtifacts(this.repoID, 'master', 1, 20)
     .subscribe(res => {
       if (!res.err) {
         this.artifacts = res.artifacts;
         console.log(this.artifacts);
       }
-    })
+    });
   }
   selectArtifact(i: string) {
     this.artifactID = Number(i);
@@ -60,11 +60,11 @@ export class CreateDeploymentComponent implements OnInit {
       artifactID: this.artifactID,
       manifest: this.manifest,
       replicas: this.replicas
-    }
+    };
     this.clipper.addDeployment(dep)
     .subscribe(res => {
       this.createError = res.err;
       this.createSuccess = !res.err;
-    })
+    });
   }
 }

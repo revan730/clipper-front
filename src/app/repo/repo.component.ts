@@ -40,6 +40,6 @@ export class RepoComponent implements OnInit {
       if (!res.err) {
         this.router.navigateByUrl('/userDash');
       }
-    })
+    });
   }
 }

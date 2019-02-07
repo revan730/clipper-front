@@ -7,7 +7,7 @@ import { ClipperService } from '../services/clipper.service';
   styleUrls: ['./create-branch.component.css']
 })
 export class CreateBranchComponent implements OnInit {
-  @Input() properties: any = {repoID: 0}
+  @Input() properties: any = {repoID: 0};
   branch: string;
   branchSuccess: boolean;
   branchError: string = null;
