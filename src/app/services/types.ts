@@ -92,6 +92,12 @@ export namespace Clipper {
         configs?: Array<BranchConfig>;
         err?: string;
       }
+      export namespace DeleteBranchConfigRequest {
+        export const link = (repoID, branch) => genLink(`repos/${repoID}/branch/${branch}`);
+      }
+      export interface DeleteBranchConfigResponse {
+        err?: string;
+      }
       export namespace AddBranchConfigRequest {
         export const link = GetBranchConfigsRequest.link;
       }

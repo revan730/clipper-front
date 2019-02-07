@@ -241,6 +241,25 @@ export class ClipperService {
       );
     }
   }
+  public deleteBranchConfig(repoID: number, branch: string) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING DELETE BRANCH', repoID, branch);
+      return this.http.delete(
+        Clipper.DeleteBranchConfigRequest.link(repoID, branch),
+        options
+      ).pipe(
+        map(res => res as Clipper.DeleteBranchConfigResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
   public getBranchConfigs(repoID: number, page: number, limit: number) {
     const token = this.st.data['token'];
     if (token) {

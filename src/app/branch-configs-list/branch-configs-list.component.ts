@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
 import { Observable } from 'rxjs/Observable';
@@ -19,6 +20,7 @@ export class BranchConfigsListComponent implements OnInit {
 
   constructor(
     public clipper: ClipperService,
+    private router: Router,
   ) {
   }
 
@@ -40,5 +42,14 @@ export class BranchConfigsListComponent implements OnInit {
         });
       }
     });
+  }
+  deleteConfig(branch: string) {
+    console.log(branch);
+    this.clipper.deleteBranchConfig(this.properties.repoID, branch)
+    .subscribe(res => {
+      if (!res.err) {
+        this.getPage(this.p);
+      }
+    })
   }
 }
