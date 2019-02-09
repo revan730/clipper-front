@@ -224,4 +224,10 @@ export namespace Clipper {
       export interface DeleteRepoResponse {
         err?: string;
       }
+      export namespace DeleteDeploymentRequest {
+        export const link = (depID) => genLink(`admin/deployments/${depID}`);
+      }
+      export interface DeleteDeploymentResponse {
+        err?: string;
+      }
 }

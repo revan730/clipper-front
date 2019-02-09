@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Clipper } from '../services/types';
 import { ClipperService } from '../services/clipper.service';
 
@@ -25,8 +25,11 @@ export class DeploymentComponent implements OnInit {
   manifestSuccess = false;
   manifestError: string = null;
 
+  deleteError: string = null;
+
   constructor(
     public clipper: ClipperService,
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
@@ -85,5 +88,13 @@ export class DeploymentComponent implements OnInit {
       this.manifestSuccess = !res.err;
     });
   }
-
+  onDeploymentDelete() {
+    this.clipper.deleteDeployment(this.deploymentID)
+    .subscribe(res => {
+      this.deleteError = res.err;
+      if (!res.err) {
+        this.router.navigateByUrl('/adminDash');
+      }
+    });
+  }
 }

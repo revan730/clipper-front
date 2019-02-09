@@ -368,6 +368,25 @@ export class ClipperService {
       );
     }
   }
+  public deleteDeployment(depID: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        headers
+      };
+      console.log('SENDING DELETE DEPLOYMENT', depID);
+      return this.http.delete(
+        Clipper.DeleteDeploymentRequest.link(depID),
+        options
+      ).pipe(
+        map(res => res as Clipper.DeleteDeploymentResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
   public getRevisions(depID: number, page: number, limit: number) {
     const token = this.st.data['token'];
     if (token) {
