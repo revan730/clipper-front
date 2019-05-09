@@ -1,7 +1,7 @@
-import { NumberValueAccessor } from '@angular/forms/src/directives';
 
 export namespace Clipper {
     export const globalLink = 'http://clipper.revan730.tk/api/v1/';
+    //export const globalLink = 'http://127.0.0.1:8080/api/v1/';
     function genLink(a: string) {
         return globalLink + a;
       }
@@ -31,6 +31,28 @@ export namespace Clipper {
         exp?: number;
         user?: string;
         userID?: number;
+      }
+      export namespace GetUsersRequest {
+        export const link = genLink('admin/user');
+      }
+      export interface User {
+        id: number;
+        login: string;
+        admin: boolean;
+      }
+      export interface GetUsersResponse {
+        total?: number;
+        users?: Array<User>;
+        err?: string;
+      }
+      export namespace ChangeUserAdminStatusRequest {
+        export const link = (userID) => genLink(`admin/user/${userID}/admin`);
+      }
+      export interface ChangeUserAdminStatusRequest {
+        admin: boolean;
+      }
+      export interface ChangeUserAdminStatusResponse {
+        err?: string;
       }
       export namespace GetReposRequest {
         export const link = genLink('repos');

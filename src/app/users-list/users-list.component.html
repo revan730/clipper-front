@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let u of users | async | paginate: { id: 'usersList', itemsPerPage: 10, currentPage: p, totalItems: total }">
+        {{u.login}} - {{u.admin ? 'Admin' : 'Developer'}} <button type="button" class="btn btn-danger" (click)="changeAdminStatus(u.id, !u.admin)">{{ u.admin ? 'Make developer' : 'Make admin' }}</button>
+    </li>
+    </ul>
+    <div class="has-text-centered">
+    <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+    <pagination-controls (pageChange)="getPage($event)" id="usersList"></pagination-controls>
+</div>

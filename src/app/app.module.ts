@@ -26,6 +26,7 @@ import { CreateDeploymentComponent } from './create-deployment/create-deployment
 import { DeploymentComponent } from './deployment/deployment.component';
 import { RevisionsListComponent } from './revisions-list/revisions-list.component';
 import { RevisionComponent } from './revision/revision.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 
 
@@ -47,7 +48,8 @@ import { RevisionComponent } from './revision/revision.component';
     CreateDeploymentComponent,
     DeploymentComponent,
     RevisionsListComponent,
-    RevisionComponent
+    RevisionComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

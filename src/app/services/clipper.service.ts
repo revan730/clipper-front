@@ -92,6 +92,51 @@ export class ClipperService {
       );
     }
   }
+  public getUsers(page: number, limit: number) {
+    const token = this.st.data['token'];
+    if (token) {
+      const params = new HttpParams()
+      .set('page', String(page))
+      .set('limit', String(limit));
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const options = {
+        params,
+        headers
+      };
+      console.log('SENDING GET USERS', params);
+      return this.http.get(
+        Clipper.GetUsersRequest.link,
+        options
+      ).pipe(
+        map(res => res as Clipper.GetUsersResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
+  public changeUserAdminStatus(userID: number, admin: boolean) {
+    const apiToken = this.st.data['token'];
+    if (apiToken) {
+      const request: Clipper.ChangeUserAdminStatusRequest = {
+        admin
+      };
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${apiToken}`
+      });
+      const options = {
+        headers
+      };
+      return this.http.post(
+        Clipper.ChangeUserAdminStatusRequest.link(userID),
+        request,
+        options
+      ).pipe(
+        map(res => res as Clipper.AddRepoResponse),
+        map(res => (console.log(res), res))
+      );
+    }
+  }
   public addRepo(fullName: string) {
     const apiToken = this.st.data['token'];
     if (apiToken) {
