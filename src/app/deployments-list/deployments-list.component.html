@@ -1,9 +1,0 @@
-<ul class="list-group">
-    <li [routerLink]="['/deployments', dep.ID]" class="list-group-item" *ngFor="let dep of deployments | async | paginate: { id: 'deploymentsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
-      {{dep.k8sName}}
-    </li>
-  </ul>
-  <div class="has-text-centered">
-    <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
-    <pagination-controls (pageChange)="getPage($event)" id="deploymentsList"></pagination-controls>
-  </div>

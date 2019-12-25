@@ -1,0 +1,21 @@
+<div class="container" style="padding-top: 2%">
+    <div class="card">
+      <div class="card-body">
+        <form #repoFullNameForm style="margin-bottom: 2%">
+          <div class="form-group">
+            <label for="inputRepoName">Выберите фото</label>
+            <input type="file" class="form-control" (change)="onFileChange($event)"/>
+          </div>
+          <div style="display: flex; justify-content:space-between">
+            <button class="btn btn-info" (click)="onImageAdd()">Загрузить</button>
+          </div>
+          <div *ngIf="uploadSuccess" class="alert alert-success" role="alert">
+            Фото загружено
+          </div>
+          <div *ngIf="uploadError" class="alert alert-error" role="alert">
+            {{uploadError}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

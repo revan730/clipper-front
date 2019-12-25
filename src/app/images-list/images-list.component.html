@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let image of images | async">
+    <img src="{{image}}" style="max-width: 500px;height: auto;width: 100;"><button style="margin-left: 5%;" class="btn btn-danger" (click)="removeImage(image)">Удалить</button>
+  </li>
+</ul>
+<div class="has-text-centered">
+  <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+</div>
