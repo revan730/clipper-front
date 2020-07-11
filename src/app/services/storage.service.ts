@@ -13,7 +13,6 @@ export class StorageService {
     this.tokenPayload = {};
   }
   setToken(token: string) {
-    console.log('set token: ', token);
     this.data['token'] = token;
     localStorage.setItem('token', token);
     this.tokenPayload = this.parseToken();
@@ -34,17 +33,5 @@ export class StorageService {
     }
 
     return true;
-  }
-  isUserAdmin(): boolean {
-    if (!this.tokenPayload) {
-      return false;
-    }
-    return this.tokenPayload.admin;
-  }
-  getUserName(): string {
-    if (!this.tokenPayload) {
-      return null;
-    }
-    return this.tokenPayload.user;
   }
 }

@@ -1,9 +1,0 @@
-<ul class="list-group">
-  <li [routerLink]="['/builds', build.id]" class="list-group-item" *ngFor="let build of builds | async | paginate: { id: 'buildsList', itemsPerPage: 10, currentPage: p, totalItems: total }">
-    {{build.date | date: 'medium'}}  {{build.branch}} - {{build.isSuccessfull ? 'Fixed' : 'Failed'}}
-  </li>
-</ul>
-<div class="has-text-centered">
-  <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
-  <pagination-controls (pageChange)="getPage($event)" id="buildsList"></pagination-controls>
-</div>
